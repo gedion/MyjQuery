@@ -11,7 +11,7 @@ My rewrite can be found in the below script file. I wrote most of the methods. S
 ```
 Test cases are in mocha and chai. It was originally written in qunit but I found it ugly. So I used my favorite testing frameworks
 ```javascript
-./my-jQuery-test.js
+./my_jQuery_test.js
 ````
 Using PhantomJS, I managed to get decent test coverage.
 <!-- saved from url=(0038)http://192.168.239.152:9004/index.html -->
