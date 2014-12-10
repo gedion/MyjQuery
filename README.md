@@ -10,6 +10,111 @@ My rewrite can be found in the below script file. I wrote most of the methods. S
 ./my_jquery.js
 ```
 Test cases are in mocha and chai. It was originally written in qunit but I found it ugly. So I used my favorite testing frameworks
+
+
+    passes: 47
+    failures: 5
+    duration: 2.21s
+
+    Testing My jQuery
+        Testing $ Constructor
+            should have it's length property set to the number contacts found ‣
+            should have it's first element of type HTMLElmentList ‣
+            should have an element with class name contact ‣
+        Testing non-dom methods
+            $.extend
+                should pouplate the properties of the 2nd parameter into target(first parameter) and return a combined object ‣
+                should DEEP pouplate the properties of the 2nd parameter into target(first parameter) and return a combined object ‣
+            $.isArray
+                should validate an empty array to be an array ‣
+                should not validate the primitive Argument attribute to be an array ‣
+                should validate arrays from other iframes to be arrays ‣
+            $.each
+                should iterate through array of elements and pass it's index and element value ‣
+                should iterate through a JSON object and retun it's prop and value ‣
+                should iterate through 'Array-like' object and return it's numerically indexed properties and values ‣
+            $.makeArray
+                should create an array if passed node lists ‣
+                should have the exact length amount ‣
+                should have the same element values ‣
+            $.proxy
+                should have it's scope set according to the 2nd parameter ‣
+        Testing DOM methods
+            $.fn.html
+                should have set the innerHTML attribute of the first element ‣
+                should have set the innerHTML attribute of the second element ‣
+            $.fn.val
+                should have set the value attribute of the first element ‣
+                should have set the value attribute of the second element ‣
+            $.fn.text
+                should set the text value of each found element ‣
+                should not append an input element ‣
+                should append an input(<input/>) text ‣
+            $.fn.find
+                should find two unordered lists ‣
+                should find 4 lists ‣
+            $.fn.children
+                should have two ul children ‣
+                should have four li children ‣
+            $.fn.parent
+                should find the 2 parents of each list ‣
+            $.fn.next
+                should have two lists siblings ‣
+                should also have two next siblings ‣
+                should have zero next siblings(calls next() twice via chaining) ‣
+            $.fn.prev
+                should have two lists siblings ‣
+                should also have two prev siblings ‣
+                should have zero prev siblings(calls prev() twice via chaining) ‣
+            $.fn.attr
+                should be able to read the attribute id ‣
+                should be able to set the attributes of each elment and fetch it's first element's attribute ‣
+                should be able to set the attributes of each elment and fetch it's second element's attribut ‣
+                should fetch the first item in the set and set/get it's attribute ‣
+            $.fn.css
+                should get the padding-left css property of the span element ‣
+                should set the padding-left css property of all span elements. test frist child ‣
+                should set the padding-left css property of all span elements. Test second child ‣
+            $.fn.width
+                should have a width value set propertly ‣
+
+                AssertionError: expected 1148 to equal 941
+
+            $.fn.show
+                should display the element ‣
+            $.fn.hide
+                should hide the element ‣
+            $.fn.offset
+                should have a top offset value of 120 ‣
+
+                AssertionError: expected 1491.818115234375 to equal 120
+
+                should have a left offset value of 10 ‣
+
+                AssertionError: expected 0 to equal 10
+
+            $.fn.bind
+                should have the clicked element as it's 'this' scope ‣
+                should have an event type of click ‣
+            $.fn.unbind
+                should be rejected as the event has been unbinded ‣
+
+                Error: timeout of 2000ms exceeded
+                    at http://192.168.239.152:9001/vendor/mocha/mocha.js:4104:14
+
+            $.fn.data
+                Should set the data attribute of element to foo:bar and be able to fetch it ‣
+            $.fn.off
+                ‣
+
+                AssertionError: expected true to be false
+
+            $.fn.addClass
+                should add class name foo to the element ‣
+            $.fn.removeClass
+                should remove class name foob from the element ‣
+
+
 ```javascript
 ./my_jQuery_test.js
 ````
