@@ -5,7 +5,8 @@ HTML doc using YUI3 can be found in
 ```javascript
 ./jsdoc/out
 ```
-My rewrite can be found in the below script file. I wrote most of the methods. Some were given to me during lecture.
+
+My jQuery rewrite can be found in the below script file. I wrote most of the methods. Some were given to me during lecture.
 ```javascript
 ./my_jquery.js
 ```
@@ -100,7 +101,7 @@ Test cases are in mocha and chai. It was originally written in qunit but I found
                 should be rejected as the event has been unbinded ‣
 
                 Error: timeout of 2000ms exceeded
-                    at http://192.168.239.152:9001/vendor/mocha/mocha.js:4104:14
+                    at /vendor/mocha/mocha.js:4104:14
 
             $.fn.data
                 Should set the data attribute of element to foo:bar and be able to fetch it ‣
@@ -119,7 +120,7 @@ Test cases are in mocha and chai. It was originally written in qunit but I found
 ./my_jQuery_test.js
 ````
 Using PhantomJS, I managed to get decent test coverage.
-<!-- saved from url=(0038)http://192.168.239.152:9004/index.html -->
+
 <div class="header medium">
 	<h1>Code coverage report for <span class="entity" my_jquery.js</span></h1>
 	<div class="path"></div>
