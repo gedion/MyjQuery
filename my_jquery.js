@@ -11,17 +11,17 @@
      *
      */
     $ = function(selector) {
-	    if(!(this instanceof $)){
-			return new $(selector);
-		}
-		
+        if (!(this instanceof $)) {
+            return new $(selector);
+        }
+
         var _self = this,
-			els;
-		if(typeof selector === 'string'){	
-			els = document.body.querySelectorAll(selector);
-		}else{
-			els = selector;
-		}
+            els;
+        if (typeof selector === 'string') {
+            els = document.body.querySelectorAll(selector);
+        } else {
+            els = selector;
+        }
         $.each(els, function(index, el) {
             _self[index] = el;
         });
@@ -32,7 +32,7 @@
          * @default null
          */
         this['length'] = els.length;
-		return this;
+        return this;
     };
     /**
      *
@@ -71,28 +71,29 @@
         }
         return hasLenMethod && inOpPasses;
     };
-	var moveWith = function(el, propertyName) {
-		var cur = el[propertyName];
-		while (cur && cur.nodeType != 1) {
-		  cur = cur[propertyName];
-		}
-		return cur;
-	};
-	var makeTraverser = function(traverser) {
-		return function() {
-		  var elements = [], args = arguments;
-		  $.each(this, function(i, element) {
-			var els = traverser.apply(element, args);
-			if (isArrayLike(els)) {
-			  elements.push.apply(elements, els);
-			} else if (els) {
-			  elements.push(els);
-			}
-		  });
-		  return $(elements);
-		};
-	  };
-	
+    var moveWith = function(el, propertyName) {
+        var cur = el[propertyName];
+        while (cur && cur.nodeType != 1) {
+            cur = cur[propertyName];
+        }
+        return cur;
+    };
+    var makeTraverser = function(traverser) {
+        return function() {
+            var elements = [],
+                args = arguments;
+            $.each(this, function(i, element) {
+                var els = traverser.apply(element, args);
+                if (isArrayLike(els)) {
+                    elements.push.apply(elements, els);
+                } else if (els) {
+                    elements.push(els);
+                }
+            });
+            return $(elements);
+        };
+    };
+
     $.extend($, {
         /**
          *
@@ -213,17 +214,17 @@
         }
     });
 
-	var getText  = function(el){
-		var text = "";
-			$.each(el.childNodes,function(i,childNode){
-				if(childNode.nodeType === Node.TEXT_NODE){
-					text += childNode.nodeValue; 
-				}else if(childNode.nodeType === Node.ELEMENT_NODE){
-					 text += getText(childNode);
-				}
-			});		
-		return text;
-	}
+    var getText = function(el) {
+        var text = "";
+        $.each(el.childNodes, function(i, childNode) {
+            if (childNode.nodeType === Node.TEXT_NODE) {
+                text += childNode.nodeValue;
+            } else if (childNode.nodeType === Node.ELEMENT_NODE) {
+                text += getText(childNode);
+            }
+        });
+        return text;
+    }
     $.extend($.prototype, {
         /**
          *  Either Set the inner html value of an element[s] or get(if no param is passed) the first element.
@@ -271,32 +272,32 @@
             }
         },
         /**	
-		 *
-		 * Either appends a text node with newText as value or fetches the text of the element[s].
-		 * 
+         *
+         * Either appends a text node with newText as value or fetches the text of the element[s].
+         *
          * @method text
          * @param newText {String} //optional
          * @chainable
          * @example
-         *	$('#qunit-fixture').html('Hi <span>there</span>.');			
-         *	equal( $('#qunit-fixture').text(), 'Hi there.', 'The text is right');			
-         *	$('#qunit-fixture span').text('<input/>');			
-         *	equal( $('#qunit-fixture input').length, 0, 'there\'s no input');			
-         *	equal( $('#qunit-fixture span').text(), '<input/>', 'The text is what we sent' );		 
+         *	$('#qunit-fixture').html('Hi <span>there</span>.');
+         *	equal( $('#qunit-fixture').text(), 'Hi there.', 'The text is right');
+         *	$('#qunit-fixture span').text('<input/>');
+         *	equal( $('#qunit-fixture input').length, 0, 'there\'s no input');
+         *	equal( $('#qunit-fixture span').text(), '<input/>', 'The text is what we sent' );
          */
         text: function(newText) {
-			if (arguments.length) {
-				var textNode;
-				
-				 $.each(this, function(i, el) {
-					el.innerHTML = "";
-					textNode = document.createTextNode(newText);                    
-					el.appendChild(textNode);
+            if (arguments.length) {
+                var textNode;
+
+                $.each(this, function(i, el) {
+                    el.innerHTML = "";
+                    textNode = document.createTextNode(newText);
+                    el.appendChild(textNode);
                 });
-            } else {				
+            } else {
                 return this[0] && getText(this[0]);
             }
-		},
+        },
         /**	
          * Finds children elments that meet the selector criteria
          * @method find
@@ -304,53 +305,53 @@
          * @chainable
          * @example
          */
-        find: function(selector) {			
-        	 Finds children elments that meet the selector criteria
-				var elements = [];
-				$.each(this,function(i,el){
-						var els = el.querySelectorAll(selector);
-						[].push.apply(elements,els);
-				});
-				return $(elements);
-			},
+        find: function(selector) {
+            Finds children elments that meet the selector criteria
+            var elements = [];
+            $.each(this, function(i, el) {
+                var els = el.querySelectorAll(selector);
+                [].push.apply(elements, els);
+            });
+            return $(elements);
+        },
         /**
          * Get next sibling
          * @method text
          * @chainable
          * @example
          */
-        next: makeTraverser(function(){
-				return moveWith(this, "nextSibling");
-		}),
+        next: makeTraverser(function() {
+            return moveWith(this, "nextSibling");
+        }),
         /**
          * Get Prev sibling
          * @method prev
          * @chainable
          * @example
          */
-        prev: makeTraverser(function(){
-			 return moveWith(this, "previousSibling");
-		}),
+        prev: makeTraverser(function() {
+            return moveWith(this, "previousSibling");
+        }),
         /**
-         * 
+         *
          * @method parent
          * @chainable
          * @example
          */
-        parent:makeTraverser( function() {
-			return this.parentNode;	
-		}),
+        parent: makeTraverser(function() {
+            return this.parentNode;
+        }),
         /**
-         * 
+         *
          * @method children
          * @chainable
          * @example
          */
         children: makeTraverser(function() {
-		  return this.children;
-		}),
+            return this.children;
+        }),
         /**
-         * Either sets 
+         * Either sets
          * @method attr
          * @param attrName
          * @param value;
@@ -358,17 +359,17 @@
          * @example
          */
         attr: function(attrName, value) {
-			if (arguments.length == 2) {
-				$.each(this, function(i, el) {
-					el.setAttribute(attrName,value);
+            if (arguments.length == 2) {
+                $.each(this, function(i, el) {
+                    el.setAttribute(attrName, value);
                 });
-				return this;
-            } else {				
+                return this;
+            } else {
                 return this[0] && this[0].getAttribute(attrName);
             }
-		},
+        },
         /**
-         * 
+         *
          * @method css
          * @param cssPropName
          * @param value;
@@ -376,31 +377,31 @@
          * @example
          */
         css: function(cssPropName, value) {
-		  if (arguments.length == 2) {
-			return $.each(this, function(i, element) {
-			  element.style[cssPropName] = value;
-			});
-		  } else {
-			return this[0] && document.defaultView.getComputedStyle(this[0]).getPropertyValue(cssPropName);
-		  }		
-		},
+            if (arguments.length == 2) {
+                return $.each(this, function(i, element) {
+                    element.style[cssPropName] = value;
+                });
+            } else {
+                return this[0] && document.defaultView.getComputedStyle(this[0]).getPropertyValue(cssPropName);
+            }
+        },
         /**
-         * 
+         *
          * @method width
          * @example
          */
         width: function() {
-		  var paddingLeft = parseInt(this.css("padding-left"), 10),
-		  paddingRight = parseInt(this.css("padding-right"), 10);
-		  return this[0].clientWidth - paddingLeft - paddingRight;	
-		},
+            var paddingLeft = parseInt(this.css("padding-left"), 10),
+                paddingRight = parseInt(this.css("padding-right"), 10);
+            return this[0].clientWidth - paddingLeft - paddingRight;
+        },
         /**
-         * 
-         * @method offset 
+         *
+         * @method offset
          * @example
          */
         offset: function() {
-			debugger;
+            debugger;
             var offset = this[0] && this[0].getBoundingClientRect();
             return {
                 top: offset.top,
@@ -415,8 +416,8 @@
          *	$('#el').hide();
          */
         hide: function() {
-			return this.css("display", "none");
-		},
+            return this.css("display", "none");
+        },
         /**
          * To Do
          * @method show
@@ -424,8 +425,8 @@
          * @example
          */
         show: function() {
-			return this.css("display", "");
-		},
+            return this.css("display", "");
+        },
 
         // Events
         /**
@@ -436,10 +437,10 @@
          * @example
          */
         bind: function(eventName, handler) {
-			return $.each(this, function(i, element) {
-				element.addEventListener(eventName, handler, false);
-			});
-		},
+            return $.each(this, function(i, element) {
+                element.addEventListener(eventName, handler, false);
+            });
+        },
         /**
          * To Do
          * @method unbind
@@ -448,23 +449,24 @@
          * @example
          */
         unbind: function(eventName, handler) {
-			return $.each(this, function(i, element) {
-				element.removeEventListener(eventName, handler, false);
-			});
-		},
-		/**
-		 * To Do
-		 * @method has
-		 * @param selector {String}
-		 * @chainable
-		 */
+            return $.each(this, function(i, element) {
+                element.removeEventListener(eventName, handler, false);
+            });
+        },
+        /**
+         * To Do
+         * @method has
+         * @param selector {String}
+         * @chainable
+         */
         has: function(selector) {
-		 var div = document.createElement("div"), matches = div.matches || div.webkitMatchesSelector || div.mozMatchesSelector;
-		  return makeTraverser(function(selector) {
-			if (matches.call(this, selector)) {
-			  return this;
-			}
-		  });
+            var div = document.createElement("div"),
+                matches = div.matches || div.webkitMatchesSelector || div.mozMatchesSelector;
+            return makeTraverser(function(selector) {
+                if (matches.call(this, selector)) {
+                    return this;
+                }
+            });
         },
         /**
          * To Do
@@ -475,32 +477,33 @@
          * @example
          */
         on: function(eventType, selector, handler) {
-           var delegator = function(ev) {
-			var cur = ev.target;
-			do {
-			  if ($([ cur ]).has(selector).length) {
-				handler.call(cur, ev);
-			  }
-			  cur = cur.parentNode;
-			} while (cur && cur !== ev.currentTarget);
-		  };
-		  return $.each(this, function(i, element) {
-			var events = $([ element ]).data("events"), eventTypeEvents;
-			if (!events) {
-			  $([ element ]).data("events", events = {});
-			}
-			if (!(eventTypeEvents = events[eventType])) {
-			  eventTypeEvents = events[eventType] = {};
-			}
-			if (!eventTypeEvents[selector]) {
-			  eventTypeEvents[selector] = [];
-			}
-			eventTypeEvents[selector].push({
-			  handler: handler,
-			  delegator: delegator
-			});
-			element.addEventListener(eventType, delegator, false);
-		  });
+            var delegator = function(ev) {
+                var cur = ev.target;
+                do {
+                    if ($([cur]).has(selector).length) {
+                        handler.call(cur, ev);
+                    }
+                    cur = cur.parentNode;
+                } while (cur && cur !== ev.currentTarget);
+            };
+            return $.each(this, function(i, element) {
+                var events = $([element]).data("events"),
+                    eventTypeEvents;
+                if (!events) {
+                    $([element]).data("events", events = {});
+                }
+                if (!(eventTypeEvents = events[eventType])) {
+                    eventTypeEvents = events[eventType] = {};
+                }
+                if (!eventTypeEvents[selector]) {
+                    eventTypeEvents[selector] = [];
+                }
+                eventTypeEvents[selector].push({
+                    handler: handler,
+                    delegator: delegator
+                });
+                element.addEventListener(eventType, delegator, false);
+            });
         },
         /**
          * To Do
@@ -529,13 +532,13 @@
          * @example
          */
         addClass: function(className) {
-			var classTest = new RegExp("(^| )" + className + "($| )");
-			  return $.each(this, function(i, element) {
-				if (!classTest.test(element.className)) {
-				  element.className = element.className + " " + className;
-				}
-			 });
-		},
+            var classTest = new RegExp("(^| )" + className + "($| )");
+            return $.each(this, function(i, element) {
+                if (!classTest.test(element.className)) {
+                    element.className = element.className + " " + className;
+                }
+            });
+        },
         /**
          * To Do
          * @method removeClass
@@ -543,11 +546,11 @@
          * @example
          */
         removeClass: function(className) {
-			var classTest = new RegExp("(^| )" + className + "($| )");
-			  return $.each(this, function(i, element) {
-				element.className = element.className.replace(classTest, "");
-			});
-		},
+            var classTest = new RegExp("(^| )" + className + "($| )");
+            return $.each(this, function(i, element) {
+                element.className = element.className.replace(classTest, "");
+            });
+        },
         /**
          * To Do
          * @method append
@@ -555,23 +558,28 @@
          * @example
          */
         append: function(element) {
-			this[0].appendChild($.buildFragment(element));
-		}
+            this[0].appendChild($.buildFragment(element));
+        }
     });
 
     $.buildFragment = function(html) {
-		if (typeof html === "string") {
-		  var matchData = html.match(/<(\w+)/), firstTag = matchData ? matchData[1] : "div", parentNodes = {
-			li: "ul",
-			tr: "table"
-		  }, parentTag = parentNodes[firstTag] || "div", parentNode = document.createElement(parentTag), frag = document.createDocumentFragment();
-		  parentNode.innerHTML = html;
-		  $.each($.makeArray(parentNode.childNodes), function(i, node) {
-			frag.appendChild(node);
-		  });
-		  return frag;
-		} else {
-		  return html;
-		}
-	 };
+        if (typeof html === "string") {
+            var matchData = html.match(/<(\w+)/),
+                firstTag = matchData ? matchData[1] : "div",
+                parentNodes = {
+                    li: "ul",
+                    tr: "table"
+                },
+                parentTag = parentNodes[firstTag] || "div",
+                parentNode = document.createElement(parentTag),
+                frag = document.createDocumentFragment();
+            parentNode.innerHTML = html;
+            $.each($.makeArray(parentNode.childNodes), function(i, node) {
+                frag.appendChild(node);
+            });
+            return frag;
+        } else {
+            return html;
+        }
+    };
 })();
