@@ -79,7 +79,7 @@ Using PhantomJS, I managed to get decent test coverage.
 	<tbody class="yui3-datatable-data">
 		
 		<tr id="yui_3_6_0_1_1418096055503_260" data-yui3-record="model_2" class="yui3-datatable-odd ">
-			<td class="yui3-datatable-col-file file yui3-datatable-sorted yui3-datatable-cell file medium"></td>
+			<td class="yui3-datatable-col-file file yui3-datatable-sorted yui3-datatable-cell file medium"><a href="https://github.com/gedion/MyjQuery/blob/master/my_jquery.js">my_jquery.js</a></td>
 			<td class="yui3-datatable-col-pic pic yui3-datatable-cell pic medium"><span class="cover-fill" style="width: 70px;"></span><span class="cover-empty" style="width:30px;"></span></td>
 			<td class="yui3-datatable-col-statements pct yui3-datatable-cell pct medium">70.52%</td>
 			<td class="yui3-datatable-col-statements_raw abs yui3-datatable-cell abs medium">(122&nbsp;/&nbsp;173)</td>
