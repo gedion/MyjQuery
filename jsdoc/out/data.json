@@ -1,0 +1,591 @@
+{
+    "project": {},
+    "files": {
+        "test-object.js": {
+            "name": "test-object.js",
+            "modules": {},
+            "classes": {
+                "$": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "$": {
+            "name": "$",
+            "shortname": "$",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "test-object.js",
+            "line": 4,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n \tvar $contacts = $('#contacts li.contact');"
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "test-object.js",
+            "line": 28,
+            "itemtype": "property",
+            "name": "length",
+            "type": "{String}",
+            "default": "null",
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 36,
+            "description": "Should pouplate the properties of the 2nd parameter into target(first parameter) and return a combined object.",
+            "itemtype": "method",
+            "name": "extend",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "object",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "example": [
+                "\n\tvar result,\n\t\ttarget = {\n\t\t\tfirst : 'Gedion'\n\t\t},\n\t\tobject = {\n\t\t\tlast : 'Woldeselassie'\n\t\t};\n\tresult = $.extend(target, object);\n\t//value of result\n\tresult = {first: 'Gedion', last: 'Woldeselassie'};\n"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 113,
+            "description": "Returns true if the passed object is an array.",
+            "itemtype": "method",
+            "name": "isArray",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n\t$.isArray([]); // true. Empty arrays are arrays.\n\t$.isArray(arguments) //false. Argument is not an array.\n\t$.isArray( new IframeArray()) //true. Arrays from different iframe are arrays."
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 132,
+            "description": "Given a collection, either array, 'array-like', or objects, it loops through each element and returns its index/prop and value.\n The scope or 'this' points to the element",
+            "itemtype": "method",
+            "name": "each",
+            "params": [
+                {
+                    "name": "collection",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "cb",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "example": [
+                "\n \t//array\n\tvar collection = ['a','b'];\n\tcollection.each(function(index,value){\n \t\tconsole.log('index', i);\n \t\tconsole.log('value',value);\n \t});\n\t//object\n\tvar collection = {foo: 'bar', zed: 'ted'};\n\tcollection.each(function(prop,value){\n \t\tconsole.log('prop',prop);\n \t\tconsole.log('value',value);\n\t});\n\t//array like. it'd only iterate through the indexed values only.\n\t//In the below example, length would not be iterated.\n\tvar collection = {0:'a', 1:'b', length: 2};\n\tcollection.each(function(index,value){\n \t\tconsole.log(index,prop);\n \t\tconsole.log('value',value);\n \t});"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 179,
+            "description": "Given 'array-like' objects, it creates a new array with the arr values and returns the new array.",
+            "itemtype": "method",
+            "name": "makeArray",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "example": [
+                "\n\tvar childNodes = document.body.childNodes;\n\tvar childArray = $.makeArray(childNodes);"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 199,
+            "itemtype": "method",
+            "name": "proxy",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "context",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n\tvar speakProxy,\n\tdog = {\n\t\tname: 'fido',\n\t\tspeak: function(words){\n\t\t\treturn this.name + ' says '+words;\n\t\t}\n\t};\n\tspeakProxy = $.proxy(dog.speak, dog);\n\tspeakProxy('woof!'); //returns 'fido says woof!'"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 222,
+            "description": "If a param is passed, it sets the innerHTML attribute of the elements with newHtml value,\n if not, it returns innerHTML value of the first element",
+            "itemtype": "method",
+            "name": "html",
+            "params": [
+                {
+                    "name": "newHtml",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\tnew $('#test-container').html('<ul id=\"contacts\"><li class=\"contact\"></li><li class=\"contact\"></li></ul>');\n\tnew $('.contact').html('Hi There'); //Set the inner html of lists with .contact class to 'Hi There'.\n\t$('contact:nth-child(1)').html();   // Returns Hi There.\n\t$('contact:nth-child(2)').html();   // Also returns Hi There."
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 244,
+            "description": "If a param is passed, it sets the value attribute of the elements with newVal value,\n if not, it returns value of the first element",
+            "itemtype": "method",
+            "name": "val",
+            "params": [
+                {
+                    "name": "newVal",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\tnew $('#test-container').html('<input type=\"text\" class=\"age\"/><input type=\"text\" class=\"age\"/>');\n\tnew $('.age').val('27'); //Set the value of inputs with .age to '27'.\n\t$('.age').val();\n\t$('.age:nth-child(2)').val();\n\t$('contact:nth-child(1)').val();   // 27.\n\t$('contact:nth-child(2)').val();   // Also returns 27."
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 268,
+            "description": "If a param is passed, it sets the text value of elments with newText.\n If not, it returns the combined text of all descendants.",
+            "itemtype": "method",
+            "name": "text",
+            "params": [
+                {
+                    "name": "newText",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\t$('#test-container').html('Hi <span>there</span>.');\n\t$('#test-container').text(); //returns Hi there.;\n\t$('#test-container span').text('<input/>');\n\t$('#test-container input').length // should return 0\n\t$('#test-container span').text() // should return <input/>"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 294,
+            "description": "Finds children elments that meet the selector criteria.",
+            "itemtype": "method",
+            "name": "find",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\t$ul = $('#test-container').html('<ul><li/><li/></ul><ul><li/><li/></ul>');\n\t$ul.find('ul'); //search for uls should return 2;\n\t$ul.find('li'); // search for lists should return 4;\n"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 313,
+            "description": "Get next sibling[s]",
+            "itemtype": "method",
+            "name": "next",
+            "chainable": 1,
+            "example": [
+                "\n\t$('#test-container').html('<ul> <li></li> <li></li> </ul> <ul> <li></li> <li></li> </ul>');\n\tvar $lis = $.find('li:first-child').next(); // returns two lists\n\t$lis.next(); // also returns 2 lists\n\t$lis.next().next(); // returns 0 lists"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 327,
+            "description": "Get prev sibling[s]",
+            "itemtype": "method",
+            "name": "prev",
+            "chainable": 1,
+            "example": [
+                "\n\t$('#test-container').html('<ul> <li></li> <li></li> </ul> <ul> <li></li> <li></li> </ul>');\n\tvar $lis = $.find('li:last-child'); //returns two lists\n\t$lis.prev(); // returns 2 lists;\n\t$lis.prev().prev(); //returns 0 lists;"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 341,
+            "description": "Get the parent of each element.",
+            "itemtype": "method",
+            "name": "parent",
+            "chainable": 1,
+            "example": [
+                "\n\tvar $lis = $('#test-container').html('<ul><li/><li/></ul><ul><li/><li/></ul>').find('li:first-child');\n\t$lis.parent(); returns two uls."
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 352,
+            "description": "Get the child of each element.",
+            "itemtype": "method",
+            "name": "children",
+            "chainable": 1,
+            "example": [
+                "\n\tvar $ul = $('#test-container').html('<ul><li/><li/></ul><ul><li/><li/></ul>');\n\t$ul.children(); //returns 4 lists"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 364,
+            "description": "If 2nd param is passed, set the attr value of each element,\n if not return the attr value of the first element.",
+            "itemtype": "method",
+            "name": "attr",
+            "params": [
+                {
+                    "name": "attrName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\t$('#test-container').html('<span></span><span></span>');\n\t$('#test-container span').attr('foo','bar');\n\t$('#test-container').html('<span></span><span></span>');\n\t$('#test-container').attr('id') //returns test-container\n\t$('#test-container span')[1].getAttribute('foo'); //bar"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 388,
+            "description": "If 2nd param is passed, set the css prop of each element,\nif not return the css value of the first element.",
+            "itemtype": "method",
+            "name": "css",
+            "params": [
+                {
+                    "name": "cssPropName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\t('#test-container').html('<span>Content</span><span>Second</span>');\n\t$('#test-container span').css('paddingLeft', '40px');\n\t$('#test-container span').css('padding-left'); //returns 20px;"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 409,
+            "description": "Returns the actual width value of the first element.",
+            "itemtype": "method",
+            "name": "width",
+            "example": [
+                "\n\t$('#test-container').html('<div class=\"big-width\"><div>Element</div></div>');\n\t$('#test-container .big-width div').width();"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 421,
+            "description": "Get the coordinates of the elements",
+            "itemtype": "method",
+            "name": "offset",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "example": [
+                "\n\t$('body').append('<div class=\"big-width\"><div class=\"row\"></div><div class=\"row\"><div id=\"pos\"></div></div></div>');\n\toffset = $('#pos').offset(); returns {top:10,left:10}"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 437,
+            "itemtype": "method",
+            "name": "hide",
+            "example": [
+                "\n\t$('#el').hide()"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 445,
+            "itemtype": "method",
+            "name": "show",
+            "example": [
+                "\n\t$('#el').show()"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 454,
+            "description": "Binds an event to the elements",
+            "itemtype": "method",
+            "name": "bind",
+            "params": [
+                {
+                    "name": "eventName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "handler",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "example": [
+                "\n\t$('#li').bind('click',function(e){\n\t\tconsole.log(e.target);\n\t})"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 470,
+            "description": "Unbinds an event to the elements",
+            "itemtype": "method",
+            "name": "bind",
+            "params": [
+                {
+                    "name": "eventName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "handler",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 482,
+            "description": "Returns descedants that match the selector",
+            "itemtype": "method",
+            "name": "has",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 498,
+            "description": "Event delegation onf group of 'selectors'",
+            "itemtype": "method",
+            "name": "on",
+            "params": [
+                {
+                    "name": "eventType",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "handler",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "example": [
+                "\n\tvar $ul = $('#test-container').html('<ul><li><span id=\"one\"/></li><li><span id=\"two\"/></li></ul>').children();\n\t$ul.on('click', 'li', handler); // handler would be called whenever a given list item is clicked"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 537,
+            "description": "Turns off Event delegation on group of 'selectors'",
+            "itemtype": "method",
+            "name": "off",
+            "params": [
+                {
+                    "name": "eventType",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "selector",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "handler",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 561,
+            "description": "Set or get the data attribute of elements",
+            "itemtype": "method",
+            "name": "data",
+            "params": [
+                {
+                    "name": "propName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 585,
+            "itemtype": "method",
+            "name": "addClass",
+            "params": [
+                {
+                    "name": "className",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "example": [
+                "\n\t$('.body').addClass('j-query');"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 599,
+            "itemtype": "method",
+            "name": "removeClass",
+            "params": [
+                {
+                    "name": "className",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "example": [
+                "\n\t$('.body').removeClass('yui-skin-sam');"
+            ],
+            "class": "$"
+        },
+        {
+            "file": "test-object.js",
+            "line": 611,
+            "description": "Appends html to the element",
+            "itemtype": "method",
+            "name": "append",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "$"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " test-object.js:36"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " test-object.js:113"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " test-object.js:132"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " test-object.js:179"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " test-object.js:421"
+        }
+    ]
+}
