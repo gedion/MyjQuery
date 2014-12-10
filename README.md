@@ -119,7 +119,7 @@ Test cases are in mocha and chai. It was originally written in qunit but I found
 ```javascript
 ./my_jQuery_test.js
 ````
-Using PhantomJS, I managed to get decent test coverage.
+Using  Istanbul, I managed to get decent test coverage.
 
 <div class="header medium">
 	<h1>Code coverage report for <span class="entity" my_jquery.js</span></h1>
